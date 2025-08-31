@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en" class="scroll-smooth"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Musical Jaguars Foundation&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://unpkg.com/lucide@latest"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero-bg {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1600x900/6366f1/ffffff?text=Musical+Jaguars+Performing');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-size: cover;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.loader {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid #f3f3f3;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 4px solid #4f46e5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: spin 1s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes spin {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: rotate(0deg); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: rotate(360deg); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.floating-note {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #c7d2fe;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: -1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.piano-keys {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #e5e7eb;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.piano-keys .key {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0 0 3px 3px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.piano-keys .key.black {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 60%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: -6px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 2;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0 0 2px 2px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-50 text-gray-800"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header &amp; Navigation --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header id="home" class="bg-white shadow-md sticky top-0 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;nav class="container mx-auto px-6 py-3 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;a href="#home" class="flex items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="text-xl font-bold text-gray-800 self-center whitespace-nowrap hidden sm:inline"&gt;Musical Jaguars&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex space-x-6 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300"&gt;About Us&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#programs" class="text-gray-600 hover:text-indigo-600 transition duration-300"&gt;Our Work&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#practice" class="text-gray-600 hover:text-indigo-600 transition duration-300"&gt;Practice Corner&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#team" class="text-gray-600 hover:text-indigo-600 transition duration-300"&gt;Our Team&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#impact" class="text-gray-600 hover:text-indigo-600 transition duration-300"&gt;Our Impact&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition duration-300 shadow"&gt;Get in Touch&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button id="mobile-menu-button" class="md:hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;i data-lucide="menu"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Mobile Menu --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="mobile-menu" class="hidden md:hidden px-6 pb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#about" class="block py-2 text-gray-600 hover:text-indigo-600"&gt;About Us&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#programs" class="block py-2 text-gray-600 hover:text-indigo-600"&gt;Our Work&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#practice" class="block py-2 text-gray-600 hover:text-indigo-600"&gt;Practice Corner&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#team" class="block py-2 text-gray-600 hover:text-indigo-600"&gt;Our Team&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#impact" class="block py-2 text-gray-600 hover:text-indigo-600"&gt;Our Impact&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#contact" class="block mt-2 bg-indigo-600 text-white text-center px-4 py-2 rounded-full hover:bg-indigo-700 shadow"&gt;Get in Touch&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Hero Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section class="hero-bg text-white h-[60vh] md:h-[80vh] flex items-center justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-center px-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight"&gt;The Musical Jaguars&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto"&gt;A community of student musicians and singers fostering leadership, talent, and community spirit.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#programs" class="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full text-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105"&gt;Learn About Our Work&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- About Us Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="about" class="py-20 bg-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="relative inline-block mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;h2 class="text-3xl font-bold text-gray-800"&gt;Our History&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;i data-lucide="music-2" class="floating-note w-16 h-16 -top-8 -left-16 transform -rotate-12"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;i data-lucide="music-4" class="floating-note w-12 h-12 -bottom-2 -right-16 transform rotate-12"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex flex-wrap justify-center items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full md:w-1/2 p-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;img src="https://placehold.co/600x400/e0e7ff/3730a3?text=The+Founding+Group" alt="Musical Jaguars Group Photo" class="rounded-lg shadow-xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="w-full md:w-1/2 p-4 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600 leading-relaxed mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                           </span>Founded in the fall of 2023 in Mrs. Ouellette's classroom at J.F. Smith Elementary, the Musical Jaguars began as a small but passionate music club. Thanks to the generosity of our primary sponsors, Dr. Sid and Dr. Lopa Dalmia, we were equipped with instruments, audio equipment, and the tools to grow.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600 leading-relaxed"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>Today, the Musical Jaguars welcomes students from grades 3-8 across JFS and Chaboya Middle School. We are a thriving community of musicians and singers dedicated to developing our skills, performing for our community, and using our talents to give back.</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Programs Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="programs" class="py-20 bg-gray-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>&lt;div class="relative inline-block text-center w-full mb-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-3xl font-bold text-gray-800"&gt;Our Work&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i data-lucide="music-3" class="floating-note w-16 h-16 top-0 -left-4 sm:left-1/4 transform rotate-6"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i data-lucide="piano" class="floating-note w-12 h-12 -bottom-4 right-4 sm:right-1/4 transform -rotate-6"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Program Card 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-lg p-8 transform hover:-translate-y-2 transition duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-indigo-600 mb-4"&gt;&lt;i data-lucide="award" class="w-12 h-12"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold mb-2"&gt;Annual Benefit Concerts&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;Our gala-style concerts are the highlight of our year, raising funds for important causes chosen by our students, such as the Autistic Self-Advocacy Network.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Program Card 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-lg p-8 transform hover:-translate-y-2 transition duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-indigo-600 mb-4"&gt;&lt;i data-lucide="mic-2" class="w-12 h-12"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold mb-2"&gt;Community Performances&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;We perform at various school and community events, including San Jose Giants games, EESD Board meetings, and local celebrations.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Program Card 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-lg shadow-lg p-8 transform hover:-translate-y-2 transition duration-300"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-indigo-600 mb-4"&gt;&lt;i data-lucide="users" class="w-12 h-12"&gt;&lt;/i&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="text-xl font-bold mb-2"&gt;Student-Led Training&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;Through The Savera Music Foundation, we offer structured, curriculum-based training and coaching led by talented student leaders to foster growth.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Gemini-Powered Practice Corner --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="practice" class="py-20 bg-indigo-50 overflow-hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;div class="piano-keys"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;div class="key black"&gt;&lt;/div&gt;&lt;/div&gt; &lt;div class="key"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6 pt-16"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-center text-gray-800 mb-4"&gt;Practice Corner&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto"&gt;Stuck on what to play? Let our AI Practice Buddy suggest some songs for you!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="instrument" class="block text-sm font-medium text-gray-700 mb-2"&gt;Your Instrument&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="instrument" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Piano&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Vocals&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Guitar&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Violin&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Drums&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;label for="mood" class="block text-sm font-medium text-gray-700 mb-2"&gt;Practice Vibe&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;select id="mood" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Upbeat &amp; Fun&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Calm &amp; Melodic&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Technical Challenge&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;option&gt;Performance Warm-up&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button id="get-suggestions-btn" class="w-full bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition duration-300 flex items-center justify-center gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="sparkle"&gt;✨&lt;/span&gt; Get Song Suggestions</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="suggestions-loader" class="hidden mx-auto mt-6 loader"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="suggestions-result" class="mt-6 p-4 bg-gray-100 rounded-lg text-gray-700 whitespace-pre-wrap"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Team Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="team" class="py-20 bg-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-center text-gray-800 mb-12"&gt;Our Team &amp; Supporters&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Team Member 1 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://placehold.co/300x300/c7d2fe/3730a3?text=Sana+Dalmia" alt="Sana Dalmia" class="w-40 h-40 rounded-full mx-auto mb-4 shadow-lg object-cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-lg font-semibold"&gt;Sana Dalmia&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-indigo-600"&gt;Student Lead, Savera Music Foundation&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Team Member 2 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://placehold.co/300x300/c7d2fe/3730a3?text=Mrs.+Ouellette" alt="Mrs. Ouellette" class="w-40 h-40 rounded-full mx-auto mb-4 shadow-lg object-cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-lg font-semibold"&gt;Mrs. Ouellette&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-indigo-600"&gt;Staff Sponsor&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Team Member 3 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://placehold.co/300x300/c7d2fe/3730a3?text=Dr.+Sid+Dalmia" alt="Dr. Sid Dalmia" class="w-40 h-40 rounded-full mx-auto mb-4 shadow-lg object-cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-lg font-semibold"&gt;Dr. Sid Dalmia&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-indigo-600"&gt;Primary Sponsor&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Team Member 4 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;img src="https://placehold.co/300x300/c7d2fe/3730a3?text=Dr.+Lopa+Dalmia" alt="Dr. Lopa Dalmia" class="w-40 h-40 rounded-full mx-auto mb-4 shadow-lg object-cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h4 class="text-lg font-semibold"&gt;Dr. Lopa Dalmia&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-indigo-600"&gt;Primary Sponsor&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Impact Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="impact" class="py-20 bg-indigo-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-3xl font-bold text-gray-800 mb-6"&gt;Our Impact&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-lg text-gray-600 max-w-3xl mx-auto mb-10"&gt;We are proud of our commitment to giving back. Through our annual benefit concerts, we have supported organizations doing vital work in our community.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="md:flex"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="md:flex-shrink-0 bg-indigo-600 flex items-center justify-center p-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i data-lucide="heart-handshake" class="h-20 w-20 text-white"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="p-8 text-left"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"&gt;Fundraising Total&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="mt-2 text-gray-500"&gt;In 2024 and 2025, we successfully raised:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="relative inline-block"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="block mt-1 text-5xl leading-tight font-medium text-black"&gt;$8,900&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;i data-lucide="music" class="absolute -top-2 -right-10 text-indigo-300 w-8 h-8 transform rotate-12"&gt;&lt;/i&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="mt-2 text-gray-500"&gt;for the &lt;span class="font-bold"&gt;Autistic Self-Advocacy Network (ASAN)&lt;/span&gt;.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Contact Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;section id="contact" class="py-20 bg-white"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-indigo-600 text-white rounded-lg shadow-xl p-8 md:p-12"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h2 class="text-3xl font-bold mb-4"&gt;Get Involved&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="mb-2 max-w-2xl mx-auto"&gt;Have questions or want to support our mission? Reach out to us!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="font-semibold mb-8"&gt;Email: sidharthdalmia2020@gmail.com | Phone: 916-600-7894&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;form class="max-w-xl mx-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-wrap -mx-3 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full md:w-1/2 px-3 mb-6 md:mb-0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label class="block uppercase tracking-wide text-indigo-200 text-xs font-bold mb-2" for="grid-first-name"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>Name</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input class="appearance-none block w-full bg-indigo-500 text-white border border-indigo-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:text-gray-800" id="grid-first-name" type="text" placeholder="Jane Doe"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full md:w-1/2 px-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label class="block uppercase tracking-wide text-indigo-200 text-xs font-bold mb-2" for="grid-email"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>Email</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;input class="appearance-none block w-full bg-indigo-500 text-white border border-indigo-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:text-gray-800" id="grid-email" type="email" placeholder="email@example.com"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;div class="flex flex-wrap -mx-3 mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full px-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label class="block uppercase tracking-wide text-indigo-200 text-xs font-bold mb-2" for="message-topic"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>Reason for contacting</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="flex items-center gap-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;select id="message-topic" class="appearance-none block w-full bg-indigo-500 text-white border border-indigo-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:text-gray-800"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;option&gt;General Inquiry&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;option&gt;I want to join the Musical Jaguars&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;option&gt;Sponsorship Opportunities&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;option&gt;I'd like to volunteer&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;button id="draft-message-btn" type="button" class="bg-white text-indigo-600 font-bold py-2 px-3 rounded-lg hover:bg-gray-200 transition duration-300" title="Help me write my message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>✨ Draft</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-wrap -mx-3 mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full px-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;label class="block uppercase tracking-wide text-indigo-200 text-xs font-bold mb-2" for="grid-message"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>Message</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;textarea class="appearance-none block w-full bg-indigo-500 text-white border border-indigo-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:text-gray-800 h-48 resize-none" id="grid-message" placeholder="Your message..."&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button class="bg-white text-indigo-600 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" type="button"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Send Message</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Footer --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="bg-gray-800 text-white py-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-6 text-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p class="flex items-center justify-center gap-2"&gt;&amp;copy; 2025 Musical Jaguars. &lt;i data-lucide="music-4" class="w-4 h-4"&gt;&lt;/i&gt; All Rights Reserved.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize lucide icons</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lucide.createIcons();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Mobile menu toggle</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const mobileMenuButton = document.getElementById('mobile-menu-button');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const mobileMenu = document.getElementById('mobile-menu');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mobileMenuButton.addEventListener('click', () =&gt; mobileMenu.classList.toggle('hidden'));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Smooth scrolling for navigation links</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- Gemini API Integration ---</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const getSuggestionsBtn = document.getElementById('get-suggestions-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const suggestionsLoader = document.getElementById('suggestions-loader');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const suggestionsResult = document.getElementById('suggestions-result');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const draftMessageBtn = document.getElementById('draft-message-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const messageTextarea = document.getElementById('grid-message');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// This function will call the Gemini API.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// NOTE: In a real-world application, you should handle API keys more securely.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// An empty key will be handled by the backend in this environment.</p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function callGemini(prompt, retries = 3, delay = 1000) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const apiKey = ""; // API Key is handled by the environment.</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const payload = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contents: [{ parts: [{ text: prompt }] }],</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt; retries; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const response = await fetch(apiUrl, {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>headers: { 'Content-Type': 'application/json' },</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>body: JSON.stringify(payload)</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (!response.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>throw new Error(`HTTP error! status: ${response.status}`);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const result = await response.json();</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (result.candidates &amp;&amp; result.candidates[0] &amp;&amp; result.candidates[0].content &amp;&amp; result.candidates[0].content.parts[0]) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return result.candidates[0].content.parts[0].text;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>throw new Error('Unexpected API response structure.');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>console.error(`Attempt ${i + 1} failed:`, error);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (i &lt; retries - 1) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>await new Promise(res =&gt; setTimeout(res, delay * Math.pow(2, i)));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>return "Sorry, I couldn't get suggestions at the moment. Please try again later.";</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Event Listener for Song Suggestions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>getSuggestionsBtn.addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const instrument = document.getElementById('instrument').value;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const mood = document.getElementById('mood').value;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prompt = `Act as a friendly music coach for a middle school student. The student plays ${instrument} and is in the mood for a "${mood}" practice session. Suggest 3 pop or classic rock songs appropriate for an intermediate level. For each song, provide one simple and encouraging practice tip. Format your response nicely with headings for each song.`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>suggestionsResult.textContent = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>suggestionsLoader.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>getSuggestionsBtn.disabled = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responseText = await callGemini(prompt);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>suggestionsResult.textContent = responseText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>suggestionsLoader.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>getSuggestionsBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Event Listener for Drafting Contact Message</p>
+<p class="p1"><span class="Apple-converted-space">        </span>draftMessageBtn.addEventListener('click', async () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const topic = document.getElementById('message-topic').value;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const prompt = `You are helping a person write a friendly and polite message to the Musical Jaguars, a student music foundation. Their reason for contacting is: "${topic}". Please draft a short, clear, and positive starting message for them to use. The user can then edit it before sending.`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const originalButtonText = draftMessageBtn.innerHTML;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>draftMessageBtn.innerHTML = '&lt;div class="loader !w-5 !h-5 !border-2"&gt;&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>draftMessageBtn.disabled = true;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const responseText = await callGemini(prompt);</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>messageTextarea.value = responseText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>draftMessageBtn.innerHTML = originalButtonText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>draftMessageBtn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+</body>
+</html>
